@@ -1,14 +1,10 @@
 #!/bin/bash
-cd $1 &> /dev/null
-mkdir $3 &> /dev/null
-for chmod + x file in $(ls -l)
-do
-if [[ $file == *.$2 ]]
-then
-cp $file $3/ &> /dev/null
-fi
-done
-tar -czvf $4 $3 &> /dev/null
-echo done
+
+chmod u+x "&0" 
+cd -P $1
+mkdir $3 
+cp -r $1/*.$2 $1/*/*.$2 --force --backup=numbered $1/$3 
+tar -czfv $4 $3
+echo "done"
 
 
