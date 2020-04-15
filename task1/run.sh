@@ -1,16 +1,14 @@
-dir_for_backup="$1"
-file_extension="$2"
-output_folder="$3"
-output_archive_name="$4"
-
-chmod u=rwx,g=rwx,o=rwx "$0"
-$(mkdir $output_folder)
-
-for file in $(find "$dir_for_backup" -name "*.$file_extension")
+#!/bin/bash
+cd $1 &> /dev/null
+mkdir $3 &> /dev/null
+for chmod + x file in $(ls -l)
 do
-	$(cp --backup=numbered "$file" "$output_folder")
+if [[ $file == *.$2 ]]
+then
+cp $file $3/ &> /dev/null
+fi
 done
-$(tar -czf "$output_archive_name" "$output_folder")
-echo "done"
+tar -czvf $4 $3 &> /dev/null
+echo done
 
 
