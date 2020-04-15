@@ -1,17 +1,12 @@
 #!/bin/bash
 
-#./run.sh <dir> <extension> <backup folder> <output archive name>
+#./run.sh <путь к директории> <расширение> <название папки для бэкапа> <имя архива
 
-dir_for_backup="$1"
-file_extension="$2"
-output_folder="$3"
-output_archive_name="$4"
+mkdir $3
 
-$(mkdir $output_folder)
-
-for file in $(find "$dir_for_backup" -name "*.$file_extension")
+for file in find "$1" -name "*.$2"
 do
-	$(cp --backup=numbered "$file" "$output_folder")
+	cp --backup=numbered "$file" "$3"
 done
-$(tar -czf "$output_archive_name" "$output_folder")
+tar -czf "$4" "$3"
 echo "done"
