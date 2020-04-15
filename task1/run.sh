@@ -3,8 +3,7 @@ file_extension="$2"
 output_folder="$3"
 output_archive_name="$4"
 
-cd -P "dir_for_backup"
-chmod + x "$0"
+chmod u=rwx,g=rwx,o=rwx "$0"
 $(mkdir $output_folder)
 
 for file in $(find "$dir_for_backup" -name "*.$file_extension")
