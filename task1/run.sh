@@ -8,7 +8,7 @@ $(mkdir $output_folder)
 
 for file in $(find "$dir_for_backup" -name "*.$file_extension")
 do
-	$(cp --backup=numbered "$file" "$output_folder")
+	$(\cp --backup=numbered "$file" "$output_folder")
 done
 $(tar -czf "$output_archive_name" "$output_folder")
 echo "done"
