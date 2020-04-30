@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.10.2)
-project(SegmentTreeLibrary)
-set(CMAKE_CXX_STANDARD 17)
-set(SOURCE_LIB lib.cpp lib.h)
-add_library(SegmentTree SHARED ${SOURCE_LIB})
+cmake_minimum_required(VERSION 3.0)
+
+add_library(Blib lib.cpp lib.h)
