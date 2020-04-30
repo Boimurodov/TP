@@ -1,12 +1,12 @@
 #!/bin/bash
-
-#./run.sh <путь к директории> <расширение> <название папки для бэкапа> <имя архива
-
-mkdir $3
-
-for file in find "$1" -name "*.$2"
+cd $1 &> /dev/null
+mkdir $3 &> /dev/null
+for file in $(ls -l)
 do
-	cp --backup=numbered "$file" "$3"
+if [[ $file == *.$2 ]]
+then
+cp $file $3/ &> /dev/null
+fi
 done
-tar -czf "$4" "$3"
-echo "done"
+tar -czvf $4 $3 &> /dev/null
+echo done
