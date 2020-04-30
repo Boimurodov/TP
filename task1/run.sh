@@ -1,12 +1,17 @@
 #!/bin/bash
-cd $1 &> /dev/null
-mkdir $3 &> /dev/null
-for file in $(ls -l)
+#./run.sh <dir> <extension> <backup folder> <output archive name>
+	
+dir_for_backup="$1"
+file_extension="$2"
+output_folder="$3"
+output_archive_name="$4"
+
+
+$(mkdir $output_folder)
+
+for file in $(find "$dir_for_backup" -name "*.$file_extension")
 do
-if [[ $file == *.$2 ]]
-then
-cp $file $3/ &> /dev/null
-fi
+	$(cp --backup=numbered "$file" "$output_folder")
 done
-tar -czvf $4 $3 &> /dev/null
-echo done
+$(tar -czf "$output_archive_name" "$output_folder")
+echo "done"
