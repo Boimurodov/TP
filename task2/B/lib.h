@@ -1,0 +1,1 @@
+bool B_checker();
